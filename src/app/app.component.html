@@ -1,0 +1,88 @@
+<mat-tab-group>
+  <mat-tab label="JAVA">
+    <div class="container">
+      <ng-template [ngIf]="!submitted" class="float-right">
+        <button type="button" class="btn btn-secondary" (click)="onSubmit()">Save</button>
+      </ng-template>           
+      <ng-template [ngIf]="submitted" class="float-right">
+        <button type="button" class="btn btn-secondary" (click)="edit();">Edit</button>
+      </ng-template>
+      <div style="margin-top: 10px;" *ngFor="let iq of iqObject">
+        <div *ngIf="iq.type === 'JAVA'">
+          <ng-template [ngIf]="!submitted" #iq.id>
+            <form #cardForm="ngForm">
+              <div class="form-group">
+                <div class="col-md-15 mb-3">
+                  <input type="text" class="form-control mb-2" id="question" required [ngModel]="iq.question"
+                    name="question">
+                </div>
+                <div class="col-md-15 mb-3">
+                  <input type="text" class="form-control mb-2" id="answer" required [ngModel]="iq.answer" name="answer">
+                </div>
+                <input type="hidden" id="id" [ngModel]="iq.id" name="id">
+              </div>
+            </form>
+            <hr/>
+          </ng-template>
+          <ng-template [ngIf]="submitted" #iq.id>
+            <div class="container">
+              <div class="row"><span><b>-</b></span><span class="question"><b>{{iq.question}}</b></span></div>
+              <div class="row"><span>{{iq.answer}}</span></div>
+            </div>
+            <hr/>
+          </ng-template>
+        </div>
+      </div> 
+    </div>
+  </mat-tab>
+  <mat-tab label="SQL">
+    <div class="container">
+      <div style="margin-top: 10px;" *ngFor="let iq of iqObject">
+        <div *ngIf="iq.type === 'SQL'">
+          <ng-template [ngIf]="!submitted" #iq.id>
+            <form (ngSubmit)="onSubmit()" #cardForm="ngForm">
+              <div class="form-group">
+                <div class="col-md-10 mb-3">
+                  <input type="text" class="form-control mb-2" id="question" required [ngModel]="iq.question"
+                    name="question">
+                </div>
+                <div class="col-md-10 mb-3">
+                  <input type="text" class="form-control mb-2" id="answer" required [ngModel]="iq.answer" name="answer">
+                </div>
+                <input type="hidden" id="id" [ngModel]="iq.id" name="id">
+                <div class="col-md-10 mb-3">
+                  <button type="submit" class="btn btn-secondary">Save</button>
+                </div>
+              </div>
+            </form>
+          </ng-template>
+          <ng-template [ngIf]="submitted" #iq.id>
+            <div class="container">
+              <div class="row"><span><b>-</b></span><span class="question"><b>{{iq.question}}</b></span></div>
+              <div class="row"><span>{{iq.answer}}</span></div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <ng-template [ngIf]="submitted" class="float-right">
+        <button type="button" class="btn btn-secondary" (click)="edit();">Edit</button>
+      </ng-template>
+    </div>
+  </mat-tab>
+  <mat-tab label="ANGULAR">
+    <div class="content" role="main">
+
+      <div *ngFor="let iq of iqObject">
+        <div class="card-container" *ngIf="iq.type === 'Angular'">
+          <div class="card">
+            <ul>
+              <li><span><b>-</b></span><span class="question"><b>{{iq.question}}</b></span></li>
+              <li class="answer"><span>{{iq.answer}}</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

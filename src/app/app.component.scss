@@ -1,0 +1,36 @@
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+  .question {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-style: italic;
+    font-size: medium;
+  }
+
+  .answer {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
+  }
+  ::ng-deep {
+.mat-tab-label, .mat-tab-link {
+    background-color: cornflowerblue;
+    color: crimson;
+}
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  .btn {
+    margin: 5px;
+  }
+
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid blueviolet;
+  }
